@@ -1,0 +1,20 @@
+{
+    "name": "nodepub/cms",
+    "type": "library",
+    "description": "Common utility classes",
+    "keywords": ["cms"],
+    "license": "MIT",
+    "authors": [
+        {"name": "Andrew Gruner", "email": "andrew.gruner@gmail.com"}
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "nodepub/core": "*",
+        "nodepub/navigation": "*",
+        "dflydev/doctrine-orm-service-provider": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "NodePub\\Cms": "src/" }
+    }
+}
