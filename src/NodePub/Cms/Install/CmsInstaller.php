@@ -29,10 +29,11 @@ class CmsInstaller implements InstallerInterface
     public function getEntityClasses()
     {
         return array(
-            'NodePub\Model\Site',
+            'NodePub\Cms\Model\Site',
             'NodePub\Cms\Model\SiteAttribute',
             'NodePub\Cms\Model\Node',
             'NodePub\Cms\Model\NodeAttribute',
+            'NodePub\Cms\Model\NodeType',
             'NodePub\Cms\Model\PublishState',
             'NodePub\Cms\Model\Block',
             'NodePub\Cms\Model\BlockType'
@@ -42,8 +43,8 @@ class CmsInstaller implements InstallerInterface
     public function install()
     {
         $this->createDefaultSite();
-        $this->createExampleNodes();
         $this->createPublishStates();
+        $this->createExampleNodes();
         $this->createCoreBlockTypes();
         $this->createBlocks();
 
@@ -54,7 +55,7 @@ class CmsInstaller implements InstallerInterface
     {
         $site = new Site();
         $site->setName('NodePub')
-            ->setDomainName('nodepub.com')
+            ->setHostName('nodepub.com')
             ->setTemplate('@default/layout.twig');
 
         $this->app['orm.em']->persist($site);
@@ -105,7 +106,6 @@ class CmsInstaller implements InstallerInterface
         $stateDefinitions = array(
             'status.draft' => 'status.draft.desc',
             'status.published' => 'status.published.desc',
-            //'status.scheduled' => 'Publically viewable on set date.', // future feature
             'status.archived' => 'status.archived.desc');
 
         foreach ($stateDefinitions as $name => $desc) {

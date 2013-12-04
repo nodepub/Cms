@@ -23,20 +23,20 @@ class AttributeType extends AbstractType
         return 'attribute';
     }
     
-    // public function setDefaultOptions(OptionsResolverInterface $resolver)
-    // {
-    //     $resolver->setDefaults(array(
-    //         'data_class' => $this->getDataClass()
-    //     ));
-    // }
-    // 
-    // public function setDataClass($className)
-    // {
-    //     $this->dataClass = $className;
-    // }
-    // 
-    // protected function getDataClass()
-    // {
-    //     return ($this->dataClass) ? $this->dataClass : 'NodePub\Core\Model\NodeAttribute';
-    // }
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => $this->getDataClass()
+        ));
+    }
+    
+    public function setDataClass($className)
+    {
+        $this->dataClass = $className;
+    }
+    
+    protected function getDataClass()
+    {
+        return ($this->dataClass) ? $this->dataClass : 'NodePub\Core\Model\NodeAttribute';
+    }
 }
